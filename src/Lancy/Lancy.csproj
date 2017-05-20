@@ -1,0 +1,10 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp1.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="AwsLambdaOwin" Version="0.2.3" />
+    <PackageReference Include="Nancy" Version="2.0.0-clinteastwood" />
+    <DotNetCliToolReference Include="Amazon.Lambda.Tools" Version="1.4.0" />
+  </ItemGroup>
+</Project>
