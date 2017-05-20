@@ -24,7 +24,7 @@
     {
         public LancyModule()
         {
-            Get("/", _ => "Hello from Nancy on AWS Lambda via AwsLambdaOwin and API Gateway!");
+            Get("/", _ => $"Hello from Nancy on AWS Lambda via AwsLambdaOwin and API Gateway! UTC: {DateTime.UtcNow}");
         }
     }
 
