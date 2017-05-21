@@ -1,6 +1,10 @@
 # Lancy
 AWS Lambda with Nancy sample project.
 
+Uses [AwsLambdaOwin](https://github.com/damianh/AwsLambdaOwin) to proxy an AWS API Gateway request to an OWIN AppFunc. 
+
+The main file of interest is [`LancyProxyFunction`](https://github.com/damianh/Lancy/blob/master/src/Lancy/LancyProxyFunction.cs) where the AppFunc is created in the `Init()` method.
+
 ### Building the function
 
 ```
