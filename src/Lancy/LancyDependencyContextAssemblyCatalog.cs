@@ -1,3 +1,5 @@
+using Nancy.Extensions;
+
 namespace Lancy
 {
     using System;
@@ -18,20 +20,17 @@ namespace Lancy
 
         /// <summary>
         /// Initializes a new instance of the <see cref="LancyDependencyContextAssemblyCatalog"/> class,
-        /// using <see cref="Assembly.GetEntryAssembly()"/>.
-        /// </summary>
-        public LancyDependencyContextAssemblyCatalog()
-            : this(Assembly.GetEntryAssembly())
-        {
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="LancyDependencyContextAssemblyCatalog"/> class,
         /// using <paramref name="entryAssembly"/>.
         /// </summary>
-        public LancyDependencyContextAssemblyCatalog(Assembly entryAssembly)
+        public LancyDependencyContextAssemblyCatalog()
         {
-            this.dependencyContext = DependencyContext.Load(entryAssembly);
+            this.dependencyContext = DependencyContext.Load(typeof(LancyDependencyContextAssemblyCatalog).GetAssembly());
+
+            // dependencyContext may be null depending on hosting model. it's null in 'dotnet xunit' and resharper test runner, but not null in ncrunch.
+            if (dependencyContext == null) 
+            {
+                this.dependencyContext = DependencyContext.Load(Assembly.GetEntryAssembly());
+            }
         }
 
         /// <summary>
