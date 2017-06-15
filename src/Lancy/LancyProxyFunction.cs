@@ -5,7 +5,6 @@
     using System.Threading.Tasks;
     using AwsLambdaOwin;
     using Nancy;
-    using Nancy.Extensions;
     using Nancy.Owin;
 
     public class LancyProxyFunction : APIGatewayOwinProxyFunction
@@ -31,7 +30,6 @@
     public class LancyBootstrapper : DefaultNancyBootstrapper
     {
         // Remove when https://github.com/NancyFx/Nancy/pull/2694 is shipped.
-        protected override IAssemblyCatalog AssemblyCatalog
-            => new LancyDependencyContextAssemblyCatalog(typeof(LancyProxyFunction).GetAssembly());
+        protected override IAssemblyCatalog AssemblyCatalog => new LancyDependencyContextAssemblyCatalog();
     }
 }
